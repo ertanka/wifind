@@ -8,6 +8,7 @@ if($action=="get"){
     $message=rawurldecode($_GET['message']);
     $ap=$_GET['ap'];
     addStatus($userId,$message,$ap);
+    echo "true";
 }else if($action=="login"){
     $name=$_GET['name'];
     newUser($name);
