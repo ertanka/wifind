@@ -1,6 +1,6 @@
 <?php
 connectToDb();
-addStatus(2,"Mesaj","FF:FF:FF:FF:FF:FF");
+newUser("Nedim");
 
 function connectToDb(){
 $user="wifind";
@@ -26,6 +26,10 @@ function addStatus($userId,$message,$accessPointMAC){
     
     $insertQuery="INSERT INTO Status(message,user_id,ap_id) VALUES ('".$message."',".$userId.",".$apId.")";
     mysql_query($insertQuery);
+}
+function newUser($name){
+    $inserQ="INSER INTO User(name) VALUES ('".$name."')";
+    echo mysql_insert_id();
 }
 function disconnectFromDb(){    
 mysql_close();
