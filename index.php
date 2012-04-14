@@ -1,6 +1,17 @@
 <?php
 connectToDb();
-newUser("Nedim");
+$action=$_GET['action'];
+if($action=="get"){
+    getUpdates();
+}else if($action=="addStatus"){
+    $userId=$_GET['user_id'];
+    $message=rawurldecode($_GET['message']);
+    $ap=$_GET['ap'];
+    addStatus($userId,$message,$ap);
+}else if($action=="login"){
+    $name=$_GET['name'];
+    newUser($name);
+}
 
 function connectToDb(){
 $user="wifind";
@@ -23,7 +34,6 @@ function addStatus($userId,$message,$accessPointMAC){
     $apResult=mysql_query($apQuery);
     $apResult = mysql_fetch_assoc($apResult);
     $apId=$apResult['id'];
-    
     $insertQuery="INSERT INTO Status(message,user_id,ap_id) VALUES ('".$message."',".$userId.",".$apId.")";
     mysql_query($insertQuery);
 }
