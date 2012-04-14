@@ -1,19 +1,21 @@
 <?php
 connectToDb();
 $action=$_GET['action'];
-if($action=="get"){
+if($action=="get"){ //action=get
     getUpdates();
-}else if($action=="status"){
+}else if($action=="status"){ //action=status&user_id=1&message=mesaj&ap=FFFFFFFFFFFF
     $userId=$_GET['user_id'];
     $message=rawurldecode($_GET['message']);
     $ap=$_GET['ap'];
     addStatus($userId,$message,$ap);
     echo "true";
-}else if($action=="login"){
+}else if($action=="login"){//action=login&name=kamil
     $name=$_GET['name'];
     newUser($name);
 }
+disconnectFromDb();
 
+//Actions
 function connectToDb(){
 $user="wifind";
 $password="wifi0102";
