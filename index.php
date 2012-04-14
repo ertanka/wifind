@@ -6,7 +6,7 @@ function connectToDb(){
 $user="wifind";
 $password="wifi0102";
 $database="wifind"; //Database adõ
-mysql_connect(localhost,$user,$password);
+mysql_connect("localhost",$user,$password);
 @mysql_select_db($database) or die( "Unable to select database");
 }
 function getUpdates(){
