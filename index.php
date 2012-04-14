@@ -28,7 +28,8 @@ function addStatus($userId,$message,$accessPointMAC){
     mysql_query($insertQuery);
 }
 function newUser($name){
-    $inserQ="INSER INTO User(name) VALUES ('".$name."')";
+    $insertQ="INSER INTO User(name) VALUES ('".$name."')";
+    mysql_query($insertQ);
     echo mysql_insert_id();
 }
 function disconnectFromDb(){    
