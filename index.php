@@ -3,7 +3,7 @@ connectToDb();
 $action=$_GET['action'];
 if($action=="get"){
     getUpdates();
-}else if($action=="addStatus"){
+}else if($action=="status"){
     $userId=$_GET['user_id'];
     $message=rawurldecode($_GET['message']);
     $ap=$_GET['ap'];
