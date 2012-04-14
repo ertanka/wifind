@@ -12,11 +12,11 @@ mysql_connect(localhost,$user,$password);
 function getUpdates(){
     $query="SELECT * FROM Status JOIN User WHERE Status.user_id=User.id";
     $result=mysql_query($query);
-    $rows = array();
-    while($r = mysql_fetch_assoc($sth)) {
-    $rows[] = $r;
-    }
-    print json_encode($rows);
+
+    while ($userRow = mysql_fetch_assoc($result)) {
+	echo $userRow['name'];
+}
+
 }
 function disconnectFromDb(){    
 mysql_close();
