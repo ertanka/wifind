@@ -18,8 +18,9 @@ function getUpdates(){
     }
     echo json_encode($arr);
 }
-function addStatus($userId,$message,$accesPointMAC){
-    $apQuery="SELECT id FROM AccessPoint WHERE MAC=".$accesPointMAC;
+function addStatus($userId,$message,$accessPointMAC){
+    $apQuery="SELECT id FROM AccessPoint WHERE MAC=".$accessPointMAC;
+    echo $apQuery;
     $apResult=mysql_query($apQuery);
     $apResult = mysql_fetch_assoc($apResult);
     echo $apResult['id'];
