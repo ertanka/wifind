@@ -20,10 +20,12 @@ function getUpdates(){
 }
 function addStatus($userId,$message,$accessPointMAC){
     $apQuery="SELECT id FROM AccessPoint WHERE MAC='".$accessPointMAC."'";
-    echo $apQuery;
     $apResult=mysql_query($apQuery);
     $apResult = mysql_fetch_assoc($apResult);
-    echo $apResult['id'];
+    $apId=$apResult['id'];
+    
+    $insertQuery="INSERT INTO Status(message,user_id,ap_id) VALUES ('".$message."',".$userId.",".$apId.")";
+    mysql_query($insertQuery);
 }
 function disconnectFromDb(){    
 mysql_close();
