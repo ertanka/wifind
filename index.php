@@ -3,7 +3,7 @@ connectToDb();
 $action=$_GET['action'];
 if($action=="get"){ //action=get
     getUpdates();
-}else if($action=="status"){ //action=status&user_id=1&message=mesaj&ap=FFFFFFFFFFFF
+}else if($action=="status"){ //action=status&user_id=1&message=mesaj&ap=library
     $userId=$_GET['user_id'];
     $message=rawurldecode($_GET['message']);
     $ap=$_GET['ap'];
@@ -31,13 +31,9 @@ function getUpdates(){
 	array_push($arr,$row);
     }
     echo json_encode($arr);
-}
-function addStatus($userId,$message,$accessPointMAC){
-    $apQuery="SELECT id FROM AccessPoint WHERE MAC='".$accessPointMAC."'";
-    $apResult=mysql_query($apQuery);
-    $apResult = mysql_fetch_assoc($apResult);
-    $apId=$apResult['id'];
-    $insertQuery="INSERT INTO Status(message,user_id,ap_id) VALUES ('".$message."',".$userId.",".$apId.")";
+}                                                                                             
+function addStatus($userId,$message,$ap){
+    $insertQuery="INSERT INTO Status(message,user_id,location) VALUES ('".$message."',".$userId.",'".$ap."')";
     mysql_query($insertQuery);
 }
 function newUser($name){
